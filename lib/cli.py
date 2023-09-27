@@ -13,7 +13,8 @@ from helpers import (
     find_activity_by_name,
     find_activity_by_id,
     update_activity,
-    delete_activity
+    delete_activity,
+    filter_activities_by_trip_id
 )
 
 
