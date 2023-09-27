@@ -105,6 +105,7 @@ def activity_submenu():
     print("4. Find activity by id")
     print("5. Update an activity")
     print("6. Delete activity")
+    print("7. Filter activities by trip ID")
 
 
 if __name__ == "__main__":
