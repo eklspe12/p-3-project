@@ -264,7 +264,7 @@ class Activity:
 
     def update(self):
         """Update the table row corresponding to the current Activity instance."""
-        sql = """UPDATE activities SET activity = ?, description = ?, price = ?, day =? WHERE id = ?"""
+        sql = """UPDATE activities SET activity_name = ?, description = ?, price = ?, day =?, trip_id =? WHERE id = ?"""
         CURSOR.execute(sql, (self.activity_name, self.description,
                        self.price, self.day, self.id, self.trip_id))
         CONN.commit()

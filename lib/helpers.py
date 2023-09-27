@@ -92,8 +92,6 @@ def create_activity():
         return None
 
 
-
-
 def list_activities():
     activities = Activity.get_all()
     for activity in activities:
@@ -131,7 +129,7 @@ def update_activity():
             activity.price = price
             day = input("\033[34mEnter new day:  \033[0m")
             activity.day = day
-            trip_id = input("Enter new trip id: ")
+            trip_id = int(input("Enter new trip id: "))
             activity.trip_id = trip_id
 
             activity.update()
