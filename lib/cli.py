@@ -84,7 +84,17 @@ def activity_menu():
         elif choice == "9":
             find_activity_by_name()
         elif choice == "10":
-            find_activity_by_id
+            find_activity_by_id()
+        elif choice == "11":
+            update_activity()
+        elif choice == "12":
+            delete_activity()
+        else:
+            print("\033[31mInvalid choice\033[0m")
+
+
+def activity_submenu():
+    print("Activity Menu:")
 
 
 if __name__ == "__main__":
