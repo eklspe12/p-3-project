@@ -19,36 +19,23 @@ from helpers import (
 
 def main():
     while True:
-        menu()
+        main_menu()
         choice = input("> ")
         if choice == "0":
             exit_program()
         elif choice == "1":
-            create_trip()
+            trip_menu()
         elif choice == "2":
-            list_trips()
-        elif choice == "3":
-            delete_trip()
-        elif choice == "4":
-            update_trip()
-        elif choice == "5":
-            find_trip_by_id()
-        elif choice == "6":
-            find_trip_by_name()
-        elif choice == "7":
-            create_activity()
-        elif choice == "8":
-            list_activities()
-        elif choice == "9":
-            find_activity_by_name()
-        elif choice == "10":
-            find_activity_by_id()
-        elif choice == "11":
-            update_activity()
-        elif choice == "12":
-            delete_activity()
+            activity_menu()
         else:
             print("\033[31mInvalid choice\033[0m")
+
+
+def main_menu():
+    print("Please select an option:")
+    print("0. Exit the program")
+    print("1. Trip Menu")
+    print("2. Activity Menu")
 
 
 def menu():
