@@ -151,13 +151,16 @@ def delete_activity():
     else:
         print(f"\033[31mActivity id {id_} not found. \033[0m")
 
+
 def filter_activities_by_trip_id():
     try:
-        trip_id = int(input("\033[34mEnter trip ID to filter activities: \033[0m"))
+        trip_id = int(
+            input("\033[34mEnter trip ID to filter activities: \033[0m"))
         activities = Activity.filter_by_trip_id(trip_id)
         if activities:
             for activity in activities:
                 print(activity)
         else:
             print(f'\033[31mNo activities found for trip ID {trip_id}\033[0m')
-    except:
+    except ValueError:
+        print("\033[31mInvalid trip ID. Please enter a valid integer\033[0m")
