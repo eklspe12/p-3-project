@@ -38,21 +38,37 @@ def main_menu():
     print("2. Activity Menu")
 
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
+def trip_menu():
+    while True:
+        trip_submenu()
+        choice = input("> ")
+        if choice == "0":
+            break
+        elif choice == "1":
+            create_trip()
+        elif choice == "2":
+            list_trips()
+        elif choice == "3":
+            delete_trip()
+        elif choice == "4":
+            update_trip()
+        elif choice == "5":
+            find_trip_by_id()
+        elif choice == "6":
+            find_trip_by_name()
+        else:
+            print("\033[31mInvalid choice\033[0m")
+
+
+def trip_submenu():
+    print("Trip Menu:")
+    print("0. Back to main menu")
     print("1. Create new trip")
     print("2. List trips")
     print("3. Delete a trip")
     print("4. Update a trip")
     print("5. Find trip by id")
     print("6. Find trip by name")
-    print("7. Create new activity")
-    print("8. List activities")
-    print("9. Find activity by name")
-    print("10. Find activity by id")
-    print("11. Update an activity")
-    print("12. Delete an activity")
 
 
 if __name__ == "__main__":
