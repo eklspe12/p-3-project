@@ -71,5 +71,21 @@ def trip_submenu():
     print("6. Find trip by name")
 
 
+def activity_menu():
+    while True:
+        activity_submenu()
+        choice = input("> ")
+        if choice == "0":
+            break
+        elif choice == "7":
+            create_activity()
+        elif choice == "8":
+            list_activities()
+        elif choice == "9":
+            find_activity_by_name()
+        elif choice == "10":
+            find_activity_by_id
+
+
 if __name__ == "__main__":
     main()
