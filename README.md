@@ -1,5 +1,5 @@
 ### CLI Vacation Planner
-
+---
 ## Authors
 
 ### Spencer Eklund
@@ -10,11 +10,11 @@
 - Linkedin https://www.linkedin.com/in/jen-millamena-software-engineer/
 - Github https://github.com/jmillamena
 
-
+---
 ## Introduction
 
 This program serves to help users plan future vacations and activities. Continue reading and you will find instructions for navigating the program as well as detailed descriptions of how each function works.
-
+---
 ## Getting Started
 
 To start this program, please follow the instructions below:
@@ -25,8 +25,7 @@ To start this program, please follow the instructions below:
 4. In your virtual environment, type “python lib/seed.py” and press enter to seed the database. Your terminal should now say “Database seeded”
         *One trip and activity are added to the database by default. You will be able to delete these later.
 5. In your virtual environment, type “python lib/cli.py” and press enter to start the program. You should now see a list of 13 different options for planning your trip.
-
-
+---
 ## Navigating the Program
 
 To navigate the program menus, you will be required to enter the number associated with the option you would like to select. When the program first loads, you will see the following three options:
@@ -56,23 +55,22 @@ To navigate the program menus, you will be required to enter the number associat
 
 ### Activity Menu 
 
-0.Back to main menu: Returns user to main program menu.
+- 0.Back to main menu: Returns user to main program menu.
 
-1 Create new activity: Allows users to create a new activity by entering a name, description, price, and trip id. The new activity is then stored in vacations.db and can be edited or deleted with methods further down.
+- 1.Create new activity: Allows users to create a new activity by entering a name, description, price, and trip id. The new activity is then stored in vacations.db and can be edited or deleted with methods further down.
 
-2.List activities: Retrieves information on all activities from vacations.db and displays it to the user.
+- 2.List activities: Retrieves information on all activities from vacations.db and displays it to the user.
 
-3.Find activity by id: Requests user enter activity id, then returns activity details of the activity in vacations.db that matches activity id.
+- 3.Find activity by id: Requests user enter activity id, then returns activity details of the activity in vacations.db that matches activity id.
 
-4.Find activity by name: Requests user enter activity name, the returns activity details of the activity in vacations.db that matched activity name.
+- 4.Find activity by name: Requests user enter activity name, the returns activity details of the activity in vacations.db that matched activity name.
 
-5.Update an activity: Requests id of activity to be updated, then prompts user to type in changes they would like to make. All changes are reflected on vacation.db. To verify changes, run “List activities” immediately after.
+- 5.Update an activity: Requests id of activity to be updated, then prompts user to type in changes they would like to make. All changes are reflected on vacation.db. To verify changes, run “List activities” immediately after.
 
-6.Delete and activity: Requests activity id then removes activity with matching id from vacations.db. To verify changes, run “List activities” immediately after.
+- 6.Delete and activity: Requests activity id then removes activity with matching id from vacations.db. To verify changes, run “List activities” immediately after.
 
-7.Filter activities by trip ID: Requests trip ID then returns any activities with matching trip ID.
-
-
+- 7.Filter activities by trip ID: Requests trip ID then returns any activities with matching trip ID.
+---
 # Files and Functions
 
 ## vacations.db
