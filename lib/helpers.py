@@ -150,3 +150,7 @@ def delete_activity():
         print(f"\033[32mActivity id {id_} deleted. \033[0m")
     else:
         print(f"\033[31mActivity id {id_} not found. \033[0m")
+
+def filter_activities_by_trip_id():
+    try:
+        
