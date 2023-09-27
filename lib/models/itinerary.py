@@ -324,3 +324,10 @@ class Activity:
 
         row = CURSOR.execute(sql, (activity_name,)).fetchone()
         return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def filter_by_trip_id(cls, trip_id):
+        """Return a list of Activity objects corresponding to specified trip ID"""
+        sql = """SELECT * FROM activities WHERE trip_id = ?"""
+        rows = CURSOR.execute(sql, (trip_id,)).fetchall()
+        return [cls.instance_from_db(row) for row in rows]
