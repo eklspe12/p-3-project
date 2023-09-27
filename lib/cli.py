@@ -90,6 +90,8 @@ def activity_menu():
             update_activity()
         elif choice == "6":
             delete_activity()
+        elif choice == "7":
+            filter_activities_by_trip_id()
         else:
             print("\033[31mInvalid choice\033[0m")
 
