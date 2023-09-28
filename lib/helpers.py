@@ -81,6 +81,10 @@ def create_activity():
 
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
+        except ValueError:
+            print(
+                "\033[31mInvalid trip id. Please enter a valid integer. \033[0m")
+            continue
             price = float(input("\033[34mEnter price:  \033[0m"))
 
             break
