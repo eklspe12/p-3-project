@@ -153,6 +153,17 @@ def get_valid_activity_name():
                 "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
 
 
+def get_valid_description():
+    while True:
+        description = input(
+            "\033[34mEnter activity's new description:  \033[0m")
+        if description:
+            return description
+        else:
+            print(
+                "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
+
+
 def delete_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
