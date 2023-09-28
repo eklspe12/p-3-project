@@ -66,31 +66,36 @@ def delete_trip():
 def create_activity():
     while True:
         activity_name = input("\033[34mEnter activity:  \033[0m")
-
         if not activity_name:
             print(
                 "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
-            continue
+        else:
+            break
 
+    while True:
         description = input("\033[34mEnter description:  \033[0m")
-
         if not description:
             print(
                 "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
-            continue
+        else:
+            break
 
+    while True:
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
+            break
         except ValueError:
             print(
                 "\033[31mInvalid trip id. Please enter a valid integer. \033[0m")
-            continue
+
+    while True:
         try:
             price = float(input("\033[34mEnter price:  \033[0m"))
+            break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
-            continue
 
+    while True:
         day = input("\033[34mEnter day:  \033[0m")
         if day in Activity.VALID_DAYS:
             break
