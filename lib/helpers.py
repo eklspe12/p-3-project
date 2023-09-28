@@ -109,6 +109,7 @@ def create_activity():
         if trip_instance:
             activity = Activity.create(
                 activity_name, description, price, day, trip_id)
+            print("\033[32mActivity added successfully!\033[0m")
             return activity
         else:
             print(
