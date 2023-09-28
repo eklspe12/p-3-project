@@ -68,6 +68,16 @@ def create_activity():
         activity_name = input("\033[34mEnter activity:  \033[0m")
         description = input("\033[34mEnter description:  \033[0m")
 
+        if not activity_name:
+            print(
+                "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
+            continue
+
+        if not description:
+            print(
+                "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
+            continue
+
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
             price = float(input("\033[34mEnter price:  \033[0m"))
@@ -104,7 +114,7 @@ def create_activity():
 def list_activities():
     activities = Activity.get_all()
     if not activities:
-        print("\033[31mNo activities found. \033[0m")
+        print("\033[31mNo activities found.\033[0m")
     else:
         for activity in activities:
             print(activity)
