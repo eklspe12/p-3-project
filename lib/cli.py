@@ -33,7 +33,7 @@ def main():
 
 
 def main_menu():
-    print("Please select an option:")
+    print("\033[32mPlease select an option:\033[0m")
     print("0. Exit the program")
     print("1. Trip Menu")
     print("2. Activity Menu")
@@ -62,7 +62,7 @@ def trip_menu():
 
 
 def trip_submenu():
-    print("Trip Menu:")
+    print("\033[32mTrip Menu:\033[0m")
     print("0. Back to main menu")
     print("1. Create new trip")
     print("2. List trips")
@@ -97,7 +97,7 @@ def activity_menu():
 
 
 def activity_submenu():
-    print("Activity Menu:")
+    print("\033[32mActivity Menu:\033[0m")
     print("0. Back to main menu")
     print("1. Create new activity")
     print("2. List activities")
