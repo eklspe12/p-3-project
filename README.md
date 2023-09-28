@@ -103,10 +103,11 @@ Returns a trip instance and its attributes based on criteria provided by other f
 Utilizes instance_from_db() to fetch and return all trip instances in the trip table on vacations.db.
 
 - find_by_id()
-Takes in an ID then utilizes instance_from_db() to return a trip instance with a matching ID. ID provided by find_trip_by_id() in helpers.py.
+Takes in an ID then utilizes instance_from_db() to return a trip instance with a matching ID. ID provided by find_trip_by_id() in helpers.py. After returning trip, prompts user if they would like to view related activities as well.
 
 - find_by_name()
 Takes in a name then utilizes instance_from_db() to return a trip instance with a matching name. Name provided by find_trip_by_name() in helpers.py.
+After returning trip, prompts user if they would like to view related activities as well.
 
 ### Activities Functions 
 - NOTE: Most functions in Activities class serve the same purpose as they do in the Trip class, except they update the activities table in vacations.db instead of the trips table.
@@ -146,10 +147,10 @@ Requests user input for name, description, price, day, and trip_id then uses Act
 Calls Activity.get_all() to return all activity instances then prints them in the terminal.
 
 - find_activity_by_name()
-Requests user input activity name then calls Activity.find_by_activity_name() to return and print activity of matching name in the activity table of vacations.db. Returns an error if no activities match the name provided.
+Requests user input activity name then calls Activity.find_by_activity_name() to return and print activity of matching name in the activity table of vacations.db. Returns an error if no activities match the name provided. After returning activity propmts user if they would like to view related trip as well.
 
 - find_activity_by_id()
-Requests user input activity ID then calls Activity.find_activity_by_id() to return and print activity of matching ID in activity table of vacations.db. Returns an error if no activities match the ID provided.
+Requests user input activity ID then calls Activity.find_activity_by_id() to return and print activity of matching ID in activity table of vacations.db. Returns an error if no activities match the ID provided.After returning activity propmts user if they would like to view related trip as well.
 
 - update_activity()
 Requests user input activity ID of activity they would like to update then calls Activity.find_by_id() to check the ID matches one in the activity table of vacations.db. If the activity ID does not exist, an error is returned. If the activity ID does exist, the user is prompted to enter new information for name, day, price, description, and trip_id which will be reflected on the activity table.
