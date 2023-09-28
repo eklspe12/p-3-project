@@ -106,7 +106,7 @@ def list_activities():
     for activity in activities:
         print(activity)
     else:
-        print("No activities found.")
+        print("\033[32mNo activities found. \033[0m")
 
 
 def find_activity_by_name():
@@ -120,7 +120,7 @@ def find_activity_by_id():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     activity = Activity.find_by_id(id_)
     print(activity) if activity else print(
-        f"\033[31mActivity id {id_} not found. Please verify id matches a valid activity. \033[0m")
+        f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
 
 
 def update_activity():
@@ -143,7 +143,7 @@ def update_activity():
                     trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
                     activity.trip_id = trip_id
                 except ValueError:
-                    print("trip_id must be an integer.")
+                    print("\033[31mtrip_id must be an integer. \033[0m")
                     get_trip_id()
                 except Exception as error:
                     print(error)
@@ -166,7 +166,7 @@ def delete_activity():
         activity.delete()
         print(f"\033[32mActivity id {id_} deleted. \033[0m")
     else:
-        print(f"\033[31mActivity id {id_} not found. \033[0m")
+        print(f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
 
 
 def filter_activities_by_trip_id():
