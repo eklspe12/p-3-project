@@ -164,6 +164,16 @@ def get_valid_description():
                 "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
 
 
+def get_valid_price():
+    while True:
+        try:
+            price = float(
+                input("\033[34mEnter new price of activity:  \033[0m"))
+            return price
+        except ValueError:
+            print("\033[31mInvalid price. Please enter a valid price. \033[0m")
+
+
 def delete_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
