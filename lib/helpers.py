@@ -143,8 +143,20 @@ def list_activities():
 def find_activity_by_id():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     activity = Activity.find_by_id(id_)
-    print(activity) if activity else print(
-        f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
+    if activity:
+        print(activity)
+
+        trips_with_activity = Trip.get_trips_with_activity(activity.id)
+
+        if trips_with_activity:
+            print("\n\033[36mTrips containing this activity:\033[0m")
+            for trip in trips_with_activity:
+                print(trip)
+        else:
+            print("\n\033[31mNo trips found containing this activity.\033[0m")
+    else:
+        print(
+            f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
 
 
 def get_valid_activity_name():
