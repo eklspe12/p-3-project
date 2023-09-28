@@ -66,12 +66,31 @@ def delete_trip():
 def create_activity():
     while True:
         activity_name = input("\033[34mEnter activity:  \033[0m")
-        description = input("\033[34mEnter description:  \033[0m")
+        if not activity_name:
+            print(
+                "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
+        else:
+            break
 
+    while True:
+        description = input("\033[34mEnter description:  \033[0m")
+        if not description:
+            print(
+                "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
+        else:
+            break
+
+    while True:
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
-            price = float(input("\033[34mEnter price:  \033[0m"))
+            break
+        except ValueError:
+            print(
+                "\033[31mInvalid trip id. Please enter a valid integer. \033[0m")
 
+    while True:
+        try:
+            price = float(input("\033[34mEnter price:  \033[0m"))
             break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
@@ -79,7 +98,6 @@ def create_activity():
     while True:
         day = input("\033[34mEnter day:  \033[0m")
         if day in Activity.VALID_DAYS:
-
             break
         else:
             print(
@@ -91,6 +109,7 @@ def create_activity():
         if trip_instance:
             activity = Activity.create(
                 activity_name, description, price, day, trip_id)
+            print("\033[32mActivity added successfully!\033[0m")
             return activity
         else:
             print(
@@ -103,10 +122,12 @@ def create_activity():
 
 def list_activities():
     activities = Activity.get_all()
-    for activity in activities:
-        print(activity)
+    if not activities:
+        print("\033[31mNo activities found.\033[0m")
     else:
-        print("\033[32mNo activities found. \033[0m")
+        for activity in activities:
+            print(activity)
+
 
 
 def find_activity_by_name():
