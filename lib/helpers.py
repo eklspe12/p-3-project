@@ -85,16 +85,14 @@ def create_activity():
             print(
                 "\033[31mInvalid trip id. Please enter a valid integer. \033[0m")
             continue
+        try:
             price = float(input("\033[34mEnter price:  \033[0m"))
-
-            break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
+            continue
 
-    while True:
         day = input("\033[34mEnter day:  \033[0m")
         if day in Activity.VALID_DAYS:
-
             break
         else:
             print(
