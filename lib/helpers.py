@@ -194,6 +194,27 @@ def get_valid_trip_id():
                 "\033[31mTrip ID must be an integer. Please enter a valid trip ID. \033[0m")
 
 
+def update_activity():
+    id_ = input("\033[34mEnter activity id:  \033[0m")
+    if activity := Activity.find_by_id(id_):
+        try:
+            activity.activity_name = get_valid_activity_name()
+            activity.description = get_valid_description()
+            activity.price = get_valid_price()
+            activity.day = get_valid_day()
+            activity.trip_id = get_valid_trip_id()
+
+            activity.update()
+            print("\033[32mActivity updated successfully! \033[0m")
+
+        except ValueError as exc:
+            print(f"\033[31mError updating activity: {exc} \033[0m")
+        except Exception as exc:
+            print(f"\033[31mError updating activity: {exc} \033[0m")
+    else:
+        print(f"\033[31mActivity {id_} not found. \033[0m")
+
+
 def delete_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
