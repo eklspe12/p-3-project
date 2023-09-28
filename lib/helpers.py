@@ -103,6 +103,7 @@ def create_activity():
 
 def list_activities():
     activities = Activity.get_all()
+    print(f"numbers of activities: {len(activities)}")
     for activity in activities:
         print(activity)
     else:
