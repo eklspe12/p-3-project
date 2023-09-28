@@ -143,32 +143,67 @@ def find_activity_by_id():
         f"\033[31mActivity id {id_} not found. Please verify id matches a valid activity. \033[0m")
 
 
+def get_valid_activity_name():
+    while True:
+        activity_name = input("\033[34mEnter activity's new name:  \033[0m")
+        if activity_name:
+            return activity_name
+        else:
+            print(
+                "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
+
+
+def get_valid_description():
+    while True:
+        description = input(
+            "\033[34mEnter activity's new description:  \033[0m")
+        if description:
+            return description
+        else:
+            print(
+                "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
+
+
+def get_valid_price():
+    while True:
+        try:
+            price = float(
+                input("\033[34mEnter new price of activity:  \033[0m"))
+            return price
+        except ValueError:
+            print("\033[31mInvalid price. Please enter a valid price. \033[0m")
+
+
+def get_valid_day():
+    while True:
+        day = input("\033[34mEnter new day:  \033[0m")
+        if day in Activity.VALID_DAYS:
+            return day
+        else:
+            print(
+                "\033[31mInvalid day of the week. Please enter a valid day. \033[0m")
+
+
+def get_valid_trip_id():
+    while True:
+        try:
+            trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
+            return trip_id
+        except ValueError:
+            print(
+                "\033[31mTrip ID must be an integer. Please enter a valid trip ID. \033[0m")
+
+
 def update_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
         try:
-            activity_name = input(
-                "\033[34mEnter activity's new name:  \033[0m")
-            activity.activity_name = activity_name
-            description = input(
-                "\033[34mEnter activity's new description:  \033[0m")
-            activity.description = description
-            price = float(
-                input("\033[34mEnter new price of activity:  \033[0m"))
-            activity.price = price
-            day = input("\033[34mEnter new day:  \033[0m")
-            activity.day = day
-            def get_trip_id():
-                try:
-                    trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
-                    activity.trip_id = trip_id
-                except ValueError:
-                    print("trip_id must be an integer.")
-                    get_trip_id()
-                except Exception as error:
-                    print(error)
-                    get_trip_id()
-            get_trip_id()
+            activity.activity_name = get_valid_activity_name()
+            activity.description = get_valid_description()
+            activity.price = get_valid_price()
+            activity.day = get_valid_day()
+            activity.trip_id = get_valid_trip_id()
+
             activity.update()
             print("\033[32mActivity updated successfully! \033[0m")
 
