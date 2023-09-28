@@ -90,7 +90,7 @@ def create_activity():
 
     while True:
         try:
-            price = float(input("\033[34mEnter price:  \033[0m"))
+            price = float(input("\033[34mEnter price:$  \033[0m"))
             break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
@@ -169,7 +169,7 @@ def get_valid_price():
     while True:
         try:
             price = float(
-                input("\033[34mEnter new price of activity:  \033[0m"))
+                input("\033[34mEnter new price of activity:$  \033[0m"))
             return price
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
