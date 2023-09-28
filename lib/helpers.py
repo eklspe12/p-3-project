@@ -174,6 +174,16 @@ def get_valid_price():
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
 
 
+def get_valid_day():
+    while True:
+        day = input("\033[34mEnter new day:  \033[0m")
+        if day in Activity.VALID_DAYS:
+            return day
+        else:
+            print(
+                "\033[31mInvalid day of the week. Please enter a valid day. \033[0m")
+
+
 def delete_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
