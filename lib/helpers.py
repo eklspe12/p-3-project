@@ -140,13 +140,6 @@ def list_activities():
             print(activity)
 
 
-def find_activity_by_name():
-    activity_name = input("\033[34mEnter activity name:  \033[0m")
-    activity = Activity.find_by_activity_name(activity_name)
-    print(activity) if activity else print(
-        f"\033[31mActivity {activity_name} not found. Please verify the entry matches a valid activity. \033[0m")
-
-
 def find_activity_by_id():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     activity = Activity.find_by_id(id_)

@@ -10,7 +10,6 @@ from helpers import (
     delete_trip,
     create_activity,
     list_activities,
-    find_activity_by_name,
     find_activity_by_id,
     update_activity,
     delete_activity,
@@ -84,7 +83,7 @@ def activity_menu():
         elif choice == "2":
             list_activities()
         elif choice == "3":
-            find_activity_by_name()
+            search_activity_by_name()
         elif choice == "4":
             find_activity_by_id()
         elif choice == "5":
@@ -93,8 +92,6 @@ def activity_menu():
             delete_activity()
         elif choice == "7":
             filter_activities_by_trip_id()
-        elif choice == "8":
-            search_activity_by_name()
         else:
             print("\033[31mInvalid choice\033[0m")
 
@@ -109,7 +106,6 @@ def activity_submenu():
     print("5. Update an activity")
     print("6. Delete activity")
     print("7. Filter activities by trip ID")
-    print("8. Search activity by name")
 
 
 if __name__ == "__main__":
