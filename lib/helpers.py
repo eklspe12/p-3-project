@@ -124,7 +124,7 @@ def find_activity_by_id():
 
 
 def update_activity():
-    id_ = input("\033[34m \033[0m"     "Enter activity id: ")
+    id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
         try:
             activity_name = input(
@@ -138,9 +138,17 @@ def update_activity():
             activity.price = price
             day = input("\033[34mEnter new day:  \033[0m")
             activity.day = day
-            trip_id = int(input("Enter new trip id: "))
-            activity.trip_id = trip_id
-
+            def get_trip_id():
+                try:
+                    trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
+                    activity.trip_id = trip_id
+                except ValueError:
+                    print("trip_id must be an integer.")
+                    get_trip_id()
+                except Exception as error:
+                    print(error)
+                    get_trip_id()
+            get_trip_id()
             activity.update()
             print("\033[32mActivity updated successfully! \033[0m")
 

@@ -177,11 +177,12 @@ class Activity:
 
     @trip_id.setter
     def trip_id(self, trip_id):
-        if isinstance(trip_id, int):
-            self._trip_id = trip_id
-        else:
+        if not isinstance(trip_id, int):
             raise Exception("trip_id must be an integer")
-
+        elif not Trip.find_by_id(trip_id):
+            raise Exception("There must be a trip with that trip_id")
+        else:
+            self._trip_id = trip_id
     @property
     def day(self):
         return self._day
@@ -266,7 +267,7 @@ class Activity:
         """Update the table row corresponding to the current Activity instance."""
         sql = """UPDATE activities SET activity_name = ?, description = ?, price = ?, day =?, trip_id =? WHERE id = ?"""
         CURSOR.execute(sql, (self.activity_name, self.description,
-                       self.price, self.day, self.id, self.trip_id))
+                       self.price, self.day, self.trip_id, self.id))
         CONN.commit()
 
     def delete(self):
