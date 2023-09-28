@@ -104,7 +104,7 @@ def create_activity():
 def list_activities():
     activities = Activity.get_all()
     if not activities:
-        print("No activities found.")
+        print("\033[31mNo activities found. \033[0m")
     else:
         for activity in activities:
             print(activity)
