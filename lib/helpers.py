@@ -66,12 +66,13 @@ def delete_trip():
 def create_activity():
     while True:
         activity_name = input("\033[34mEnter activity:  \033[0m")
-        description = input("\033[34mEnter description:  \033[0m")
 
         if not activity_name:
             print(
                 "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
             continue
+
+        description = input("\033[34mEnter description:  \033[0m")
 
         if not description:
             print(
