@@ -10,11 +10,11 @@ from helpers import (
     delete_trip,
     create_activity,
     list_activities,
-    find_activity_by_name,
     find_activity_by_id,
     update_activity,
     delete_activity,
-    filter_activities_by_trip_id
+    filter_activities_by_trip_id,
+    search_activity_by_name
 )
 
 
@@ -83,7 +83,7 @@ def activity_menu():
         elif choice == "2":
             list_activities()
         elif choice == "3":
-            find_activity_by_name()
+            search_activity_by_name()
         elif choice == "4":
             find_activity_by_id()
         elif choice == "5":

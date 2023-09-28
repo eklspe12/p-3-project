@@ -154,6 +154,21 @@ class Trip:
         row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
 
+    @classmethod
+    def get_trips_with_activity(cls, activity_id):
+        """Return a list of Trip objects that contain the specified activity_id."""
+        sql = """
+            SELECT t.*
+            FROM trips t
+            INNER JOIN activities a ON t.id = a.trip_id
+            WHERE a.id = ?
+        """
+        rows = CURSOR.execute(sql, (activity_id,)).fetchall()
+
+        trips_with_activity = [cls.instance_from_db(row) for row in rows]
+
+        return trips_with_activity
+
 
 class Activity:
     all = {}
@@ -183,6 +198,7 @@ class Activity:
             raise Exception("There must be a trip with that trip_id")
         else:
             self._trip_id = trip_id
+
     @property
     def day(self):
         return self._day

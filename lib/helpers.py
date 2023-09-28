@@ -81,8 +81,15 @@ def delete_trip():
 
 
 def create_activity():
+    activity_name = None
+    description = None
+    trip_id = None
+    price = None
+    day = None
+
     while True:
         activity_name = input("\033[34mEnter activity:  \033[0m")
+
         if not activity_name:
             print(
                 "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
@@ -91,6 +98,7 @@ def create_activity():
 
     while True:
         description = input("\033[34mEnter description:  \033[0m")
+
         if not description:
             print(
                 "\033[31mDescription cannot be empty. Please enter a valid description. \033[0m")
@@ -100,14 +108,17 @@ def create_activity():
     while True:
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
-            break
+            if not Trip.find_by_id(trip_id):
+                print(
+                    "\033[31mTrip with the specified ID does not exist. Please choose a valid trip ID. \033[0m")
+            else:
+                break
         except ValueError:
-            print(
-                "\033[31mInvalid trip id. Please enter a valid integer. \033[0m")
+            print("\033[31mInvalid input. Please enter a valid trip ID. \033[0m")
 
     while True:
         try:
-            price = float(input("\033[34mEnter price:$  \033[0m"))
+            price = float(input("\033[34mEnter price:  \033[0m"))
             break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
@@ -126,7 +137,7 @@ def create_activity():
         if trip_instance:
             activity = Activity.create(
                 activity_name, description, price, day, trip_id)
-            print("\033[32mActivity added successfully!\033[0m")
+            print("\033[32mActivity added successfully! \033[0m")
             return activity
         else:
             print(
@@ -146,19 +157,23 @@ def list_activities():
             print(activity)
 
 
-
-def find_activity_by_name():
-    activity_name = input("\033[34mEnter activity name:  \033[0m")
-    activity = Activity.find_by_activity_name(activity_name)
-    print(activity) if activity else print(
-        f"\033[31mActivity {activity_name} not found. Please verify the entry matches a valid activity. \033[0m")
-
-
 def find_activity_by_id():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     activity = Activity.find_by_id(id_)
-    print(activity) if activity else print(
-        f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
+    if activity:
+        print(activity)
+
+        trips_with_activity = Trip.get_trips_with_activity(activity.id)
+
+        if trips_with_activity:
+            print("\n\033[36mTrips containing this activity:\033[0m")
+            for trip in trips_with_activity:
+                print(trip)
+        else:
+            print("\n\033[31mNo trips found containing this activity.\033[0m")
+    else:
+        print(
+            f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
 
 
 def get_valid_activity_name():
@@ -222,7 +237,6 @@ def update_activity():
             activity.day = get_valid_day()
             activity.trip_id = get_valid_trip_id()
 
-
             activity.update()
             print("\033[32mActivity updated successfully! \033[0m")
 
@@ -240,7 +254,8 @@ def delete_activity():
         activity.delete()
         print(f"\033[32mActivity id {id_} deleted. \033[0m")
     else:
-        print(f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
+        print(
+            f"\033[31mActivity id {id_} not found. Please verify id is an integer and matches a valid activity. \033[0m")
 
 
 def filter_activities_by_trip_id():
@@ -255,3 +270,23 @@ def filter_activities_by_trip_id():
             print(f'\033[31mNo activities found for trip ID {trip_id}\033[0m')
     except ValueError:
         print("\033[31mInvalid trip ID. Please enter a valid integer\033[0m")
+
+
+def search_activity_by_name():
+    activity_name = input("\033[34mEnter activity name to search:  \033[0m")
+
+    activity = Activity.find_by_activity_name(activity_name)
+
+    if activity:
+        print(f"Activity found: {activity}")
+
+        trips_with_activity = Trip.get_trips_with_activity(activity.id)
+
+        if trips_with_activity:
+            print("Trips containing this activity:")
+            for trip in trips_with_activity:
+                print(trip)
+        else:
+            print("No trips found containing this activity.")
+    else:
+        print("\033[31mActivity not found. \033[0m")
