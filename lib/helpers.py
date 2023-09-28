@@ -248,3 +248,23 @@ def filter_activities_by_trip_id():
             print(f'\033[31mNo activities found for trip ID {trip_id}\033[0m')
     except ValueError:
         print("\033[31mInvalid trip ID. Please enter a valid integer\033[0m")
+
+
+def search_activity_by_name():
+    activity_name = input("\033[34mEnter activity name to search:  \033[0m")
+
+    activity = Activity.find_by_activity_name(activity_name)
+
+    if activity:
+        print(f"Activity found: {activity}")
+
+        trips_with_activity = Trip.get_trips_with_activity(activity.id)
+
+        if trips_with_activity:
+            print("Trips containing this activity:")
+            for trip in trips_with_activity:
+                print(trip)
+        else:
+            print("No trips found containing this activity.")
+    else:
+        print("\033[31mActivity not found. \033[0m")
