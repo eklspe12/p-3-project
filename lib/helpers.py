@@ -143,41 +143,14 @@ def find_activity_by_id():
         f"\033[31mActivity id {id_} not found. Please verify id matches a valid activity. \033[0m")
 
 
-def update_activity():
-    id_ = input("\033[34mEnter activity id:  \033[0m")
-    if activity := Activity.find_by_id(id_):
-        try:
-            activity_name = input(
-                "\033[34mEnter activity's new name:  \033[0m")
-            activity.activity_name = activity_name
-            description = input(
-                "\033[34mEnter activity's new description:  \033[0m")
-            activity.description = description
-            price = float(
-                input("\033[34mEnter new price of activity:  \033[0m"))
-            activity.price = price
-            day = input("\033[34mEnter new day:  \033[0m")
-            activity.day = day
-            def get_trip_id():
-                try:
-                    trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
-                    activity.trip_id = trip_id
-                except ValueError:
-                    print("trip_id must be an integer.")
-                    get_trip_id()
-                except Exception as error:
-                    print(error)
-                    get_trip_id()
-            get_trip_id()
-            activity.update()
-            print("\033[32mActivity updated successfully! \033[0m")
-
-        except ValueError as exc:
-            print(f"\033[31mError updating activity: {exc} \033[0m")
-        except Exception as exc:
-            print(f"\033[31mError updating activity: {exc} \033[0m")
-    else:
-        print(f"\033[31mActivity {id_} not found. \033[0m")
+def get_valid_activity_name():
+    while True:
+        activity_name = input("\033[34mEnter activity's new name:  \033[0m")
+        if activity_name:
+            return activity_name
+        else:
+            print(
+                "\033[31mActivity name cannot be empty. Please enter a valid name. \033[0m")
 
 
 def delete_activity():
