@@ -184,6 +184,16 @@ def get_valid_day():
                 "\033[31mInvalid day of the week. Please enter a valid day. \033[0m")
 
 
+def get_valid_trip_id():
+    while True:
+        try:
+            trip_id = int(input("\033[34mEnter new trip id: \033[0m"))
+            return trip_id
+        except ValueError:
+            print(
+                "\033[31mTrip ID must be an integer. Please enter a valid trip ID. \033[0m")
+
+
 def delete_activity():
     id_ = input("\033[34mEnter activity id:  \033[0m")
     if activity := Activity.find_by_id(id_):
