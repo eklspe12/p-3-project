@@ -103,11 +103,11 @@ def create_activity():
 
 def list_activities():
     activities = Activity.get_all()
-    print(f"numbers of activities: {len(activities)}")
-    for activity in activities:
-        print(activity)
-    else:
+    if not activities:
         print("No activities found.")
+    else:
+        for activity in activities:
+            print(activity)
 
 
 def find_activity_by_name():
