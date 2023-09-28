@@ -164,4 +164,6 @@ Requests user input trip_id then utilizes Activity.filter_activities_by_trip_id(
 Imports functions from helper.py and organizes them in a way that matches what the user sees in their terminal.
 
 ## seed.py
+
 Contains the create_table() and drop_table() functions imported from itinerary.py, as well as an example trip and activity to populate the newly created tables in vacation.db. To seed the database, run “python lib/seed.py” in your terminal. You should see the message “Database seeded” if run successfully. 
+
