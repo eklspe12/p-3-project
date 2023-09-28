@@ -26,15 +26,32 @@ def list_trips():
 def find_trip_by_name():
     name = input("\033[34mEnter the trip name: \033[0m")
     trip = Trip.find_by_name(name)
-    print(trip) if trip else print(
-        f'\033[31mTrip {name} not found. Please verify the name matches a valid trip. \033[0m')
+    if trip:
+        print(trip)
+        view_activities_option = input("\033[34mDo you want to view activities for this trip? (yes/no): \033[0m").strip().lower()
+        if view_activities_option == "yes":
+            view_activities_for_trip(trip.id) 
+    else:
+        print(f'\033[31mTrip {name} not found. Please verify the name matches a valid trip. \033[0m')
 
+
+def view_activities_for_trip(trip_id):
+    activities = Activity.filter_by_trip_id(trip_id)
+    if activities:
+        print("\033[32mActivities for Trip ID", trip_id, ":\033[0m")
+        for activity in activities:
+            print(activity)
 
 def find_trip_by_id():
     id_ = input("\033[34mEnter the trip id:  \033[0m")
     trip = Trip.find_by_id(id_)
-    print(trip) if trip else print(
-        f'\033[31mTrip id {id_} not found. Please verify the id is a number that matches a valid trip \033[0m')
+    if trip:
+        print(trip) 
+        view_activities_option = input("\033[34mDo you want to view activities for this trip? (yes/no): \033[0m").strip().lower()
+        if view_activities_option == "yes":
+            view_activities_for_trip(trip.id)
+    else:
+        print(f'\033[31mTrip id {id_} not found. Please verify the id is a number that matches a valid trip \033[0m')
 
 
 def update_trip():
