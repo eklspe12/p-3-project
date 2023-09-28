@@ -67,14 +67,23 @@ def create_activity():
     while True:
         activity_name = input("\033[34mEnter activity:  \033[0m")
         description = input("\033[34mEnter description:  \033[0m")
-        day = input("\033[34mEnter day:  \033[0m")
 
         try:
             trip_id = int(input("\033[34mEnter trip id: \033[0m"))
             price = float(input("\033[34mEnter price:  \033[0m"))
+
             break
         except ValueError:
             print("\033[31mInvalid price. Please enter a valid price. \033[0m")
+
+    while True:
+        day = input("\033[34mEnter day:  \033[0m")
+        if day in Activity.VALID_DAYS:
+
+            break
+        else:
+            print(
+                "\033[31mInvalid day of the week. Please enter a valid day. \033[0m")
 
     try:
         trip_instance = Trip.find_by_id(trip_id)
